@@ -27,6 +27,7 @@ namespace MySQLhelp
                 MySqlCommand mysqlcom = new MySqlCommand(sqlstr, mysqlcon);
                 mysqlcom.ExecuteNonQuery();
                 mysqlcon.Close();
+             
         }
 
 

@@ -1,11 +1,11 @@
 ﻿using System.Windows.Forms;
 using MySQLhelp;
 using MySql.Data.MySqlClient;
-using Oracle.ManagedDataAccess;
 using System.Data;
-using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Net;
+using oracelDatabase;
+using Oracle.ManagedDataAccess.Client;
 
 namespace MYSQL
 {
@@ -17,6 +17,9 @@ namespace MYSQL
         }
 
         MySqlOperate sqlOperate = new MySqlOperate();
+
+        oracleHelp oracleOperate = new oracleHelp();
+        
 
         //窗体加载时，执行程序
         private void FrmMain_Load(object sender, EventArgs e)
@@ -100,7 +103,7 @@ namespace MYSQL
                     //获取oracle数据库中数据
                     string SQL = "select * from YM_FINISH_INFO";
 
-                    OracleDataReader DReader = new OracleOperate().ReturnDataReader(SQL);
+                    OracleDataReader DReader =oracleOperate.ReturnDataReader(SQL);
                     if (DReader.HasRows)//判断SqlDataReader对象中是否有数据
                     {
                         while (DReader.Read())//循环读取SqlDataReader对象中的数据
@@ -110,6 +113,13 @@ namespace MYSQL
                             sqlOperate.MySqlCom(mysql);
                         }
                     }
+
+                    oracleOperate.CloseConn();//关闭oracle连接
+
+                    
+
+
+
                 }
                 if (iNum == 2)
                 {
@@ -119,7 +129,7 @@ namespace MYSQL
                     //获取oracle数据库中数据
                     string SQL = "select * from YM_FINISH2_INFO";
 
-                    OracleDataReader DReader = new OracleOperate().ReturnDataReader(SQL);
+                    OracleDataReader DReader = oracleOperate.ReturnDataReader(SQL);
                     if (DReader.HasRows)//判断SqlDataReader对象中是否有数据
                     {
                         while (DReader.Read())//循环读取SqlDataReader对象中的数据
@@ -129,6 +139,7 @@ namespace MYSQL
                             sqlOperate.MySqlCom(mysql);
                         }
                     }
+                    oracleOperate.CloseConn();//关闭oracle连接
                 }
                 if (iNum == 3)
                 {
@@ -138,7 +149,8 @@ namespace MYSQL
                     //获取oracle数据库中数据
                     string SQL = "select * from YM_FINISH3_INFO";
 
-                    OracleDataReader DReader = new OracleOperate().ReturnDataReader(SQL);
+
+                    OracleDataReader DReader = oracleOperate.ReturnDataReader(SQL);
                     if (DReader.HasRows)//判断SqlDataReader对象中是否有数据
                     {
                         while (DReader.Read())//循环读取SqlDataReader对象中的数据
@@ -148,6 +160,7 @@ namespace MYSQL
                             sqlOperate.MySqlCom(mysql);
                         }
                     }
+                    oracleOperate.CloseConn();//关闭oracle连接
                 }
                 if (iNum == 4)
                 {
@@ -157,7 +170,8 @@ namespace MYSQL
                     //获取oracle数据库中数据
                     string SQL = "select * from YM_FINISH4_INFO";
 
-                    OracleDataReader DReader = new OracleOperate().ReturnDataReader(SQL);
+
+                    OracleDataReader DReader = oracleOperate.ReturnDataReader(SQL);
                     if (DReader.HasRows)//判断SqlDataReader对象中是否有数据
                     {
                         while (DReader.Read())//循环读取SqlDataReader对象中的数据
@@ -167,6 +181,7 @@ namespace MYSQL
                             sqlOperate.MySqlCom(mysql);
                         }
                     }
+                    oracleOperate.CloseConn();//关闭oracle连接
                 }
             }
         }

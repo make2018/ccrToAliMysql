@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
 
-namespace MYSQL
+namespace oracelDatabase
 {
-    class OracleOperate
+    class oracleHelp
     {
         protected OracleConnection Connection;
         private string connectionString;
-        public OracleOperate()
+        public oracleHelp()
         {
             string connStr;
 
@@ -115,6 +115,7 @@ namespace MYSQL
         {
             OpenConn();
             OracleCommand command = new OracleCommand(sql, Connection);
+
             return command.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
         }
         #endregion
